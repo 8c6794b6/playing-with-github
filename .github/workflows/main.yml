@@ -25,7 +25,7 @@ jobs:
     name: A job to say hello
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Hello world action step
         uses: ./
@@ -65,7 +65,7 @@ jobs:
     name: Running composite run steps action
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Hello world action
         uses: ./.github/actions/composite01
@@ -142,7 +142,7 @@ jobs:
           cabal --version
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Update cabal package index
         run: cabal update
@@ -187,7 +187,7 @@ jobs:
       # - ps01
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
