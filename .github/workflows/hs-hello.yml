@@ -14,19 +14,33 @@ defaults:
 jobs:
   cabal-install:
     name: Build hs-hello with cabal-install
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - ubuntu-24.04-arm
+          - windows-latest
+
+          # As of 2025-08-19, haskell-actions/setup not working well
+          # with windows-11-arm runner.
+          #
+          # - windows-11-arm
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Haskell with haskell-actions/setup
         uses: haskell-actions/setup@v2
-        with:
-          ghc-version: '9.8'
-          cabal-version: '3.10'
+        # with:
+        #   ghc-version: '9.8'
+        #   cabal-version: '3.10'
 
       - name: Echo foo
         run: echo ${{ inputs.foo }}
+
+      - name: Echo runner.arch
+        run: echo ${{ runner.arch }}
 
       - name: Show paths and versions
         run: |
@@ -39,12 +53,12 @@ jobs:
           cabal build hs-hello
           cabal test hs-hello
 
-      - name: Generate coverage report
-        uses: 8c6794b6/hpc-codecov-action@v4
-        with:
-          target: cabal:test-main
+      # - name: Generate coverage report
+      #   uses: 8c6794b6/hpc-codecov-action@v4
+      #   with:
+      #     target: cabal:test-main
 
-      - name: Upload coverage report
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # - name: Upload coverage report
+      #   uses: codecov/codecov-action@v4
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
