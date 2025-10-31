@@ -15,7 +15,7 @@
     "@actions/github": "^6.0.0"
   },
   "devDependencies": {
-    "@actions/io": "^1.0.2",
+    "@actions/io": "^2.0.0",
     "@vercel/ncc": "^0.38.0",
     "purescript": "^0.15.0",
     "spago": "^0.21.0",
