@@ -11,7 +11,7 @@
     "all": "yarn build && yarn ncc && yarn uglify"
   },
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^2.0.0",
     "@actions/github": "^6.0.0"
   },
   "devDependencies": {
