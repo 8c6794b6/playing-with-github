@@ -29,20 +29,20 @@ runs:
         esac
 
     - name: Cache stack compiler
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ${{ steps.stack-root.outputs.tool }}
         key: stack-ghc-${{ inputs.cache-key }}
 
     - name: Cache extra stack related files for windows
       if: runner.os == 'Windows'
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: C:\Users\runneradmin\AppData\Local\Programs\stack
         key: stack-windows-extra-${{ inputs.cache-key }}
 
     - name: Cache files under stack root
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ${{ steps.stack-root.outputs.root }}
         key: stack-root-${{ inputs.cache-key }}
